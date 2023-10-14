@@ -1,0 +1,6 @@
+.git
+/assets/*
+!/assets/README
+/protected/runtime/*
+!/protected/runtime/README
+/protected/config/params.ini

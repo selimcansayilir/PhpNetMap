@@ -1,0 +1,36 @@
+# Example to use multiple servers
+# Remember to publish address server names in VIRTUAL_HOST for this server IP
+proxy:
+   image: jwilder/nginx-proxy
+   ports:
+     - 80:80
+   volumes:
+    - /var/run/docker.sock:/tmp/docker.sock:ro
+   restart: always
+   
+   
+server1:
+  image: marcelofmatos/phpnetmap
+  environment:
+   - VIRTUAL_HOST=server1.example.com
+   - ADMIN_USER=admin1
+   - ADMIN_PASSWORD=pnm1
+  restart: always
+  
+  
+server2:
+  image: marcelofmatos/phpnetmap
+  environment:
+   - VIRTUAL_HOST=server2.example.com
+   - ADMIN_USER=admin2
+   - ADMIN_PASSWORD=pnm2
+  restart: always
+  
+  
+server3:
+  image: marcelofmatos/phpnetmap
+  environment:
+   - VIRTUAL_HOST=server3.example.com
+   - ADMIN_USER=admin3
+   - ADMIN_PASSWORD=pnm3
+  restart: always
